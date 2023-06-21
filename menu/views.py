@@ -5,9 +5,9 @@ def welcome(request):
     return render(request, 'welcome.html')
   
   
-def menu(request):
+
     
-    menu_list=[
+menu_list=[
      
       {
         "type": "appetizer",
@@ -122,8 +122,13 @@ def menu(request):
         "description": "Sweet red bean paste sandwiched between two fluffy pancakes. A popular traditional Japanese dessert."
       }
     ]
-
-    return render(request, 'menu.html', {'menu_data': menu_list})
-def menu_item(request):
-  print(request)
+def menu(request):
+      return render(request, 'menu.html', {'menu_data': menu_list})
   
+# def first_item(request): #passing index as an argument
+#   item = menu_list[0] #assigning item to the menu_list index
+#   return render(request,'food_item.html', {'menu_data' : item} )
+
+def menu_item(request, index):
+  item = menu_list[index]
+  return render(request, 'food_item.html', {'menu_item' : item})
